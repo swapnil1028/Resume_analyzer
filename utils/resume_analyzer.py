@@ -1,3 +1,8 @@
+import builtins
+
+if not hasattr(builtins, "xrange"):
+    builtins.xrange = range
+
 import re
 
 class ResumeAnalyzer:

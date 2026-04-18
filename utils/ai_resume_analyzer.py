@@ -1,6 +1,11 @@
 import os
 import streamlit as st
 from dotenv import load_dotenv
+import builtins
+
+if not hasattr(builtins, "xrange"):
+    builtins.xrange = range
+
 import google.generativeai as genai
 import pdfplumber
 from pdf2image import convert_from_path

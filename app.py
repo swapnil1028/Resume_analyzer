@@ -1321,7 +1321,7 @@ class ResumeApp:
                 # Add a prominent analyze button
                 analyze_standard = st.button("🔍 Analyze My Resume",
                                     type="primary",
-                                    use_container_width=True,
+                                    width='stretch',
                                     key="analyze_standard_button")
 
                 if analyze_standard:
@@ -1820,7 +1820,7 @@ class ResumeApp:
                                 margin=dict(l=10, r=10, t=30, b=10)
                             )
 
-                            st.plotly_chart(fig, use_container_width=True)
+                            st.plotly_chart(fig, width='stretch')
 
                         # Display model usage with enhanced visualization
                         if ai_stats["model_usage"]:
@@ -1869,7 +1869,7 @@ class ResumeApp:
                                 }
                             )
 
-                            st.plotly_chart(fig, use_container_width=True)
+                            st.plotly_chart(fig, width='stretch')
 
                         # Display top job roles with enhanced visualization
                         if ai_stats["top_job_roles"]:
@@ -1920,7 +1920,7 @@ class ResumeApp:
                                 coloraxis_showscale=False
                             )
 
-                            st.plotly_chart(fig, use_container_width=True)
+                            st.plotly_chart(fig, width='stretch')
 
                             # Add a timeline chart for analysis over time (mock
                             # data for now)
@@ -1999,7 +1999,7 @@ class ResumeApp:
                                 )
                             )
 
-                            st.plotly_chart(fig, use_container_width=True)
+                            st.plotly_chart(fig, width='stretch')
 
                         # Display score distribution if available
                         if ai_stats["score_distribution"]:
@@ -2121,7 +2121,7 @@ class ResumeApp:
                             <div style='background: linear-gradient(135deg, #1e3c72, #2a5298); padding: 20px; border-radius: 15px; margin: 10px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.2);'>
                             """, unsafe_allow_html=True)
 
-                            st.plotly_chart(fig, use_container_width=True)
+                            st.plotly_chart(fig, width='stretch')
 
                             # Add descriptive text below the chart
                             st.markdown("""
@@ -2332,7 +2332,7 @@ class ResumeApp:
                 # Add a prominent analyze button
                 analyze_ai = st.button("🤖 Analyze with AI",
                                 type="primary",
-                                use_container_width=True,
+                                width='stretch',
                                 key="analyze_ai_button")
 
                 if analyze_ai:
@@ -2499,7 +2499,7 @@ class ResumeApp:
                                             margin=dict(l=20, r=20, t=50, b=20),
                                         )
                                         
-                                        st.plotly_chart(fig1, use_container_width=True)
+                                        st.plotly_chart(fig1, width='stretch')
                                         
                                         status = "Excellent" if resume_score >= 80 else "Good" if resume_score >= 60 else "Needs Improvement"
                                         st.markdown(f"<div style='text-align: center; font-weight: bold;'>{status}</div>", unsafe_allow_html=True)
@@ -2536,7 +2536,7 @@ class ResumeApp:
                                             margin=dict(l=20, r=20, t=50, b=20),
                                         )
                                         
-                                        st.plotly_chart(fig2, use_container_width=True)
+                                        st.plotly_chart(fig2, width='stretch')
                                         
                                         status = "Excellent" if ats_score >= 80 else "Good" if ats_score >= 60 else "Needs Improvement"
                                         st.markdown(f"<div style='text-align: center; font-weight: bold;'>{status}</div>", unsafe_allow_html=True)
@@ -2590,7 +2590,7 @@ class ResumeApp:
                                                     margin=dict(l=20, r=20, t=50, b=20),
                                                 )
                                                 
-                                                st.plotly_chart(fig3, use_container_width=True)
+                                                st.plotly_chart(fig3, width='stretch')
                                                 
                                                 match_status = "Excellent Match" if job_match_score >= 80 else "Good Match" if job_match_score >= 60 else "Low Match"
                                                 st.markdown(f"<div style='text-align: center; font-weight: bold;'>{match_status}</div>", unsafe_allow_html=True)
@@ -2786,7 +2786,7 @@ class ResumeApp:
                                             data=pdf_buffer,
                                             file_name=f"resume_analysis_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
                                             mime="application/pdf",
-                                            use_container_width=True,
+                                            width='stretch',
                                             on_click=lambda: st.balloons()
                                         )
                                     else:
@@ -2841,7 +2841,7 @@ class ResumeApp:
             if st.button("Get Started", key="get_started_btn", 
                         help="Click to start analyzing your resume",
                         type="primary",
-                        use_container_width=True):
+                        width='stretch'):
                 cleaned_name = "🔍 RESUME ANALYZER".lower().replace(" ", "_").replace("🔍", "").strip()
                 st.session_state.page = cleaned_name
                 st.rerun()
@@ -2919,7 +2919,7 @@ class ResumeApp:
             
             # Navigation buttons
             for page_name in self.pages.keys():
-                if st.button(page_name, use_container_width=True):
+                if st.button(page_name, width='stretch'):
                     cleaned_name = page_name.lower().replace(" ", "_").replace("🏠", "").replace("🔍", "").replace("📝", "").replace("📊", "").replace("🎯", "").replace("💬", "").replace("ℹ️", "").strip()
                     st.session_state.page = cleaned_name
                     st.rerun()
