@@ -471,30 +471,10 @@ class ResumeApp:
         col1, col2, col3 = st.columns([1, 3, 1])
         
         with col2:
-            # GitHub star button with lottie animation
-            st.markdown("""
-            <div style='display: flex; justify-content: center; align-items: center; margin-bottom: 10px;'>
-                <a href='https://github.com/Hunterdii/Smart-AI-Resume-Analyzer' target='_blank' style='text-decoration: none;'>
-                    <div style='display: flex; align-items: center; background-color: #24292e; padding: 5px 10px; border-radius: 5px; transition: all 0.3s ease;'>
-                        <svg height="16" width="16" viewBox="0 0 16 16" version="1.1" style='margin-right: 5px;'>
-                            <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" fill="gold"></path>
-                        </svg>
-                        <span style='color: white; font-size: 14px;'>Star this repo</span>
-                    </div>
-                </a>
-            </div>
-            """, unsafe_allow_html=True)
-            
             # Footer text
             st.markdown("""
             <p style='text-align: center;'>
-                Powered by <b>Streamlit</b> and <b>Google Gemini AI</b> | Developed by 
-                <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" target="_blank" style='text-decoration: none; color: #FFFFFF'>
-                    <b>Het Patel (Hunterdii)</b>
-                </a>
-            </p>
-            <p style='text-align: center; font-size: 12px; color: #888888;'>
-                "Every star counts! If you find this project helpful, please consider starring the repo to help it reach more people."
+                Powered by <b>Streamlit</b> and <b>Google Gemini AI</b>
             </p>
             """, unsafe_allow_html=True)
 
@@ -546,8 +526,6 @@ class ResumeApp:
     def render_dashboard(self):
         """Render the dashboard page"""
         self.dashboard_manager.render_dashboard()
-
-        st.toast("Check out these repositories: [Awesome Hacking](https://github.com/Hunterdii/Awesome-Hacking)", icon="ℹ️")
 
 
     def render_empty_state(self, icon, message):
@@ -1001,245 +979,36 @@ class ResumeApp:
                 print(f"Full traceback: {traceback.format_exc()}")
                 st.error(f"❌ Error preparing resume data: {str(e)}")
 
-        st.toast("Check out these repositories: [30-Days-Of-Rust](https://github.com/Hunterdii/30-Days-Of-Rust)", icon="ℹ️")
-
     def render_about(self):
         """Render the about page"""
-        # Apply modern styles
-        from ui_components import apply_modern_styles
-        import base64
-        import os
-
-        # Function to load image as base64
-        def get_image_as_base64(file_path):
-            try:
-                with open(file_path, "rb") as image_file:
-                    encoded = base64.b64encode(image_file.read()).decode()
-                    return f"data:image/jpeg;base64,{encoded}"
-            except:
-                return None
-
-        # Get image path and convert to base64
-        image_path = os.path.join(
-    os.path.dirname(__file__),
-    "assets",
-     "124852522.jpeg")
-        image_base64 = get_image_as_base64(image_path)
-
         apply_modern_styles()
+        page_header(
+            "About Smart Resume AI",
+            "A powerful AI-driven platform for optimizing your resume"
+        )
 
-        # Add Font Awesome icons and custom CSS
-        st.markdown("""
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-            <style>
-                .profile-section, .vision-section, .feature-card {
-                    text-align: center;
-                    padding: 2rem;
-                    background: rgba(45, 45, 45, 0.9);
-                    border-radius: 20px;
-                    margin: 2rem auto;
-                    max-width: 800px;
-                }
-
-                .profile-image {
-                    width: 200px;
-                    height: 200px;
-                    border-radius: 50%;
-                    margin: 0 auto 1.5rem;
-                    display: block;
-                    object-fit: cover;
-                    border: 4px solid #4CAF50;
-                }
-
-                .profile-name {
-                    font-size: 2.5rem;
-                    color: white;
-                    margin-bottom: 0.5rem;
-                }
-
-                .profile-title {
-                    font-size: 1.2rem;
-                    color: #4CAF50;
-                    margin-bottom: 1.5rem;
-                }
-
-                .social-links {
-                    display: flex;
-                    justify-content: center;
-                    gap: 1.5rem;
-                    margin: 2rem 0;
-                }
-
-                .social-link {
-                    font-size: 2rem;
-                    color: #4CAF50;
-                    transition: all 0.3s ease;
-                    padding: 0.5rem;
-                    border-radius: 50%;
-                    background: rgba(76, 175, 80, 0.1);
-                    width: 60px;
-                    height: 60px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-decoration: none;
-                }
-
-                .social-link:hover {
-                    transform: translateY(-5px);
-                    background: #4CAF50;
-                    color: white;
-                    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-                }
-
-                .bio-text {
-                    color: #ddd;
-                    line-height: 1.8;
-                    font-size: 1.1rem;
-                    margin-top: 2rem;
-                    text-align: left;
-                }
-
-                .vision-text {
-                    color: #ddd;
-                    line-height: 1.8;
-                    font-size: 1.1rem;
-                    font-style: italic;
-                    margin: 1.5rem 0;
-                    text-align: left;
-                }
-
-                .vision-icon {
-                    font-size: 2.5rem;
-                    color: #4CAF50;
-                    margin-bottom: 1rem;
-                }
-
-                .vision-title {
-                    font-size: 2rem;
-                    color: white;
-                    margin-bottom: 1rem;
-                }
-
-                .features-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 2rem;
-                    margin: 2rem auto;
-                    max-width: 1200px;
-                }
-
-                .feature-card {
-                    padding: 2rem;
-                    margin: 0;
-                }
-
-                .feature-icon {
-                    font-size: 2.5rem;
-                    color: #4CAF50;
-                    margin-bottom: 1rem;
-                }
-
-                .feature-title {
-                    font-size: 1.5rem;
-                    color: white;
-                    margin: 1rem 0;
-                }
-
-                .feature-description {
-                    color: #ddd;
-                    line-height: 1.6;
-                }
-            </style>
-        """, unsafe_allow_html=True)
-
-        # Hero Section
-        st.markdown("""
-            <div class="hero-section">
-                <h1 class="hero-title">About Smart Resume AI</h1>
-                <p class="hero-subtitle">A powerful AI-driven platform for optimizing your resume</p>
-            </div>
-        """, unsafe_allow_html=True)
-
-        # Profile Section
-        st.markdown(f"""
-            <div class="profile-section">
-                <img src="{image_base64 if image_base64 else 'https://avatars.githubusercontent.com/Hunterdii'}"
-                     alt="Het Patel"
-                     class="profile-image"
-                     onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/Hunterdii';">
-                <h2 class="profile-name">Het Patel (Hunterdii)</h2>
-                <p class="profile-title">Full Stack Developer & AI/ML Enthusiast</p>
-                <div class="social-links">
-                    <a href="https://github.com/Hunterdii" class="social-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:hunterdii9879@gmail.com" class="social-link" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                <p class="bio-text">
-                    Hello! I'm a passionate Full Stack Developer with expertise in AI and Machine Learning.
-                    I created Smart Resume AI to revolutionize how job seekers approach their career journey.
-                    With my background in both software development and AI, I've designed this platform to
-                    provide intelligent, data-driven insights for resume optimization.
+        st.markdown(
+            """
+            <div class="about-container animate-fade-in">
+                <h2 style="margin-top: 0;">What it does</h2>
+                <p>
+                    Smart Resume AI helps you analyze and improve your resume with clear, actionable feedback.
+                    It highlights strengths, identifies gaps, and provides recommendations to improve readability and ATS alignment.
                 </p>
-            </div>
-        """, unsafe_allow_html=True)
-
-
-
-
-        # Vision Section
-        st.markdown("""
-            <div class="vision-section">
-                <i class="fas fa-lightbulb vision-icon"></i>
-                <h2 class="vision-title">Our Vision</h2>
-                <p class="vision-text">
-                    "Smart Resume AI represents my vision of democratizing career advancement through technology.
-                    By combining cutting-edge AI with intuitive design, this platform empowers job seekers at
-                    every career stage to showcase their true potential and stand out in today's competitive job market."
+                <h2>Privacy</h2>
+                <p>
+                    We focus on keeping your information private and only using it to generate the insights you request.
                 </p>
+                <h2>How to use</h2>
+                <ul>
+                    <li>Upload your resume in the <b>Resume Analyzer</b> tab</li>
+                    <li>Use the <b>Resume Builder</b> to generate a clean, professional resume</li>
+                    <li>Check <b>Dashboard</b> (admin) for analytics</li>
+                </ul>
             </div>
-        """, unsafe_allow_html=True)
-
-        # Features Section
-        st.markdown("""
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-robot feature-icon"></i>
-                    <h3 class="feature-title">AI-Powered Analysis</h3>
-                    <p class="feature-description">
-                        Advanced AI algorithms provide detailed insights and suggestions to optimize your resume for maximum impact.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-line feature-icon"></i>
-                    <h3 class="feature-title">Data-Driven Insights</h3>
-                    <p class="feature-description">
-                        Make informed decisions with our analytics-based recommendations and industry insights.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3 class="feature-title">Privacy First</h3>
-                    <p class="feature-description">
-                        Your data security is our priority. We ensure your information is always protected and private.
-                    </p>
-                </div>
-            </div>
-            <div style="text-align: center; margin: 3rem 0;">
-                <a href="?page=analyzer" class="cta-button">
-                    Start Your Journey
-                    <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-                </a>
-            </div>
-        """, unsafe_allow_html=True)
-
-        st.toast("Check out these repositories: [Iriswise](https://github.com/Hunterdii/Iriswise)", icon="ℹ️")
+            """,
+            unsafe_allow_html=True,
+        )
 
     def render_analyzer(self):
         """Render the resume analyzer page"""
@@ -2798,9 +2567,6 @@ class ResumeApp:
                             import traceback as tb
                             st.code(tb.format_exc())
 
-        st.toast("Check out these repositories: [Awesome Java](https://github.com/Hunterdii/Awesome-Java)", icon="ℹ️")
-
-
     def render_home(self):
         apply_modern_styles()
         
@@ -2833,8 +2599,6 @@ class ResumeApp:
         
         st.markdown('</div>', unsafe_allow_html=True)
         
-        st.toast("Check out these repositories: [AI-Nexus(AI/ML)](https://github.com/Hunterdii/AI-Nexus)", icon="ℹ️")
-
         # Call-to-Action with Streamlit navigation
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
@@ -2849,8 +2613,6 @@ class ResumeApp:
     def render_job_search(self):
         """Render the job search page"""
         render_job_search()
-
-        st.toast("Check out these repositories: [GeeksforGeeks-POTD](https://github.com/Hunterdii/GeeksforGeeks-POTD)", icon="ℹ️")
 
 
     def render_feedback_page(self):
@@ -2875,36 +2637,6 @@ class ResumeApp:
         with stats_tab:
             feedback_manager.render_feedback_stats()
 
-        st.toast("Check out these repositories: [TryHackMe Free Rooms](https://github.com/Hunterdii/tryhackme-free-rooms)", icon="ℹ️")
-
-
-    def show_repo_notification(self):
-        message = """
-<div style="background-color: #1e1e1e; border-radius: 10px; border: 1px solid #4b6cb7; padding: 10px; margin: 10px 0; color: white;">
-    <div style="margin-bottom: 10px;">Check out these other repositories:</div>
-    <div style="margin-bottom: 5px;"><b>Hacking Resources:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/tryhackme-free-rooms" target="_blank" style="color: #4CAF50;">TryHackMe Free Rooms</a></li>
-        <li><a href="https://github.com/Hunterdii/Awesome-Hacking" target="_blank" style="color: #4CAF50;">Awesome Hacking</a></li>
-    </ul>
-    <div style="margin-bottom: 5px;"><b>Programming Languages:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/Awesome-Java" target="_blank" style="color: #4CAF50;">Awesome Java</a></li>
-        <li><a href="https://github.com/Hunterdii/30-Days-Of-Rust" target="_blank" style="color: #4CAF50;">30 Days Of Rust</a></li>
-    </ul>
-    <div style="margin-bottom: 5px;"><b>Data Structures & Algorithms:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/GeeksforGeeks-POTD" target="_blank" style="color: #4CAF50;">GeeksforGeeks POTD</a></li>
-        <li><a href="https://github.com/Hunterdii/Leetcode-POTD" target="_blank" style="color: #4CAF50;">Leetcode POTD</a></li>
-    </ul>
-    <div style="margin-bottom: 5px;"><b>AI/ML Projects:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/AI-Nexus" target="_blank" style="color: #4CAF50;">AI Nexus</a></li>
-    </ul>
-    <div style="margin-top: 10px;">If you find this project helpful, please consider ⭐ starring the repo!</div>
-</div>
-"""
-        st.sidebar.markdown(message, unsafe_allow_html=True)
 
 
     def main(self):
@@ -2957,8 +2689,7 @@ class ResumeApp:
                             except Exception as e:
                                 st.error(f"Error during login: {str(e)}")
         
-            # Display the repository notification in the sidebar
-            self.show_repo_notification()
+            # Sidebar intentionally kept free of repository/promotional blocks
 
         # Force home page on first load
         if 'initial_load' not in st.session_state:
