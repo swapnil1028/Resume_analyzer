@@ -1,4 +1,4 @@
-﻿"""
+"""
 Smart Resume AI - Main Application
 """
 import time
@@ -876,11 +876,7 @@ class ResumeApp:
         if st.button("Generate Resume 📄", type="primary"):
             print("Validating form data...")
             print(f"Session state form data: {st.session_state.form_data}")
-            print(
-    f"Email input value: {
-        st.session_state.get(
-            'email_input',
-             '')}")
+            print(f"Email input value: {st.session_state.get('email_input', '')}")
 
             # Get the current values from form
             current_name = st.session_state.form_data['personal_info']['full_name'].strip(
@@ -939,16 +935,13 @@ class ResumeApp:
                             st.download_button(
                                 label="Download Resume 📥",
                                 data=resume_buffer,
-                                file_name=f"{
-    current_name.replace(
-        ' ', '_')}_resume.docx",
+                                file_name=f"{current_name.replace(' ', '_')}_resume.docx",
                                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                                 on_click=lambda: st.balloons()
                             )
                         except Exception as db_error:
                             print(
-    f"Warning: Failed to save to database: {
-        str(db_error)}")
+    f"Warning: Failed to save to database: {str(db_error)}")
                             # Still allow download even if database save fails
                             st.warning(
                                 "⚠️ Resume generated but couldn't be saved to database")
@@ -959,9 +952,7 @@ class ResumeApp:
                             st.download_button(
                                 label="Download Resume 📥",
                                 data=resume_buffer,
-                                file_name=f"{
-    current_name.replace(
-        ' ', '_')}_resume.docx",
+                                file_name=f"{current_name.replace(' ', '_')}_resume.docx",
                                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                                 on_click=lambda: st.balloons()
                             )
@@ -1185,8 +1176,7 @@ class ResumeApp:
                         # Show results based on document type
                         if analysis.get('document_type') != 'resume':
                             st.error(
-    f"⚠️ This appears to be a {
-        analysis['document_type']} document, not a resume!")
+    f"⚠️ This appears to be a {analysis['document_type']} document, not a resume!")
                             st.warning(
                                 "Please upload a proper resume for ATS analysis.")
                             return
